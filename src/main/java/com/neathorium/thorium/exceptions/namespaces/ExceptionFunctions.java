@@ -15,12 +15,12 @@ public interface ExceptionFunctions {
 
     static boolean isException(Exception ex) {
         final var exception = ExceptionConstants.EXCEPTION;
-        return !(Objects.isNull(ex) || isReferenceOrMessageEquals(ex, exception));
+        return !(Objects.isNull(ex) || ExceptionFunctions.isReferenceOrMessageEquals(ex, exception));
     }
 
     static boolean isNonException(Exception ex) {
         final var exception = ExceptionConstants.EXCEPTION;
-        return !Objects.isNull(ex) && isReferenceOrMessageEquals(ex, exception);
+        return !Objects.isNull(ex) && ExceptionFunctions.isReferenceOrMessageEquals(ex, exception);
     }
 
     static RuntimeException getRuntimeExcpetion(ExceptionData<RuntimeException> data, Exception exception) {
