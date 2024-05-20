@@ -17,7 +17,7 @@
         <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <junit.jupiter.version>5.10.2</junit.jupiter.version>
-        <aspectj.version>1.9.4</aspectj.version>
+        <aspectj.version>1.9.22.1</aspectj.version>
         <allure.version>2.27.0</allure.version>
         <allure-maven.version>2.10.0</allure-maven.version>
         <allure.cmd.download.url>https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline</allure.cmd.download.url>
@@ -30,6 +30,11 @@
     </repositories>
     <dependencies>
         <!-- Testing Dependencies -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -75,9 +80,10 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${maven-surefire-plugin.version}</version>
                         <configuration>
+                            <useSystemClassLoader>false</useSystemClassLoader>
                             <testFailureIgnore>true</testFailureIgnore>
                             <argLine>
-                                -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                                -javaagent:"build/.m2/repository/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                             </argLine>
                         </configuration>
                     </plugin>
