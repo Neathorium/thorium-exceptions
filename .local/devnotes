@@ -1,0 +1,2 @@
+Usually the following maven goal is being run for the build:
+mvn -U clean package -Dverbose=true -Dmaven.repo.local=build/.m2/repository
